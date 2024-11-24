@@ -1,0 +1,10 @@
+[
+    {
+        "locationName": "Location 1",
+        "siteName": "Site 1",
+        "siteAddress": "123 Fake St, Fakeville",
+        "contactName": "John Doe",
+        "contactNumber": "1234567890",
+        "contactEmail": ""
+    }
+]
