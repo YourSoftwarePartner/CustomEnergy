@@ -1,0 +1,19 @@
+{
+  "cwd": "C:\\Dev\\CustomEnergy\\CustomEnergy\\custom-energy-react-f7",
+  "type": [
+    "pwa",
+    "web"
+  ],
+  "name": "CustomEnergy",
+  "framework": "react",
+  "template": "tabs",
+  "cssPreProcessor": false,
+  "bundler": "vite",
+  "theming": {
+    "customColor": true,
+    "color": "#a6d608",
+    "darkMode": false,
+    "iconFonts": true
+  },
+  "customBuild": false
+}

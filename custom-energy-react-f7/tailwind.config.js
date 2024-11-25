@@ -1,0 +1,12 @@
+const konstaConfig = require('konsta/config');
+
+module.exports = konstaConfig({
+    content: ['./src/**/*.{js,jsx,ts,tsx}', './src/index.html'],
+    darkMode: 'class',
+    konsta: {
+        colors: {
+            // "primary" is the main app color, if not specified will be default to '#007aff'
+            primary: '#7c9b17'
+        }
+    }
+    });
