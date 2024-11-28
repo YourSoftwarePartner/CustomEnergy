@@ -6,6 +6,7 @@ import JobsPage from '../pages/jobs.jsx';
 import CustomersPage from '../pages/customers.jsx';
 import ProductPage from '../pages/product.jsx';
 import AdminPage from '../pages/admin.jsx';
+import AssetNew from '..//pages/asset-new.jsx'
 
 import DynamicRoutePage from '../pages/dynamic-route.jsx';
 import Client from '../pages/client.jsx';
@@ -46,6 +47,11 @@ var routes = [
     component: DynamicRoutePage,
   },
   {
+    path: '/client/:clientId/add/asset',
+    component: AssetNew
+  },
+  {
+
     path: '/client/:clientId/',
     async: function ({ router, to, resolve }) {
       // App instance

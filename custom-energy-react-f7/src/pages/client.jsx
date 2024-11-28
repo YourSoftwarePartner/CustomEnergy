@@ -13,13 +13,13 @@ const Client = (props) => {
       <BlockTitle large>Information [FORM HERE]</BlockTitle>
       <BlockTitle large>Assets</BlockTitle>
       <List strong dividersIos>
-        <ListItem external link="/asd/">Add New Asset</ListItem>
+        <ListItem link={`add/asset`}>Add New Asset</ListItem>
       </List>
       <BlockTitle large>Contacts</BlockTitle>
       <List strong dividersIos>
-        <ListItem external link="/asd/"></ListItem>
+        <ListItem link={`add/contact`}>Add New Contact</ListItem>
       </List>
-      <BlockTitle large>Links</BlockTitle>
+      {/* <BlockTitle large>Links</BlockTitle>
       <List strong dividersIos>
         {client.links.map((link, index) => (
           <ListItem
@@ -30,8 +30,8 @@ const Client = (props) => {
             target="_blank"
           ></ListItem>
         ))}
-        <ListItem external link="/asd/">Add New Link</ListItem>
-      </List>
+        <ListItem external link={`${props.f7route.path}/add/link`}>Add New Link</ListItem>
+      </List> */}
     </Page>
   );
 };
