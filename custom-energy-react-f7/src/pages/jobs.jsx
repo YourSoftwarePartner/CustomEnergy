@@ -3,32 +3,30 @@ import { Page, Navbar, List, ListItem, Block, Button, useStore } from 'framework
 import store from '../js/store';
 
 const JobsPage = () => {
-  const products = useStore('products');
+  const jobs = useStore('jobs');
 
-  const addProduct = () => {
-    store.dispatch('addProduct', {
-      id: '4',
-      title: 'Apple iPhone 12',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis.',
-    });
-  };
+  // const addProduct = () => {
+  //   store.dispatch('addJob', {
+  //     id: '4',
+  //     title: 'Apple iPhone 12',
+  //     description:
+  //       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis.',
+  //   });
+  // };
 
   return (
-    <Page name="catalog">
-      <Navbar title="Catalog" />
+    <Page name="Jobs">
+      <Navbar title="All Jobs" />
       <List strong dividersIos outlineIos insetMd>
-        {products.map((product) => (
-          <ListItem key={product.id} title={product.title} link={`/product/${product.id}/`} />
+        {jobs.map((job) => (
+          <ListItem key={job.id} title={job.name} link={`/jobs/${job.id}/`} />
         ))}
       </List>
-      {products.length === 3 && (
-        <Block>
-          <Button fill onClick={addProduct}>
-            Add Product
-          </Button>
-        </Block>
-      )}
+      <Block>
+        <Button fill link="/job/new">
+          Create New Job
+        </Button>
+      </Block>
     </Page>
   );
 };

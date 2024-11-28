@@ -1,10 +1,19 @@
 import React from 'react';
-import { Page, Navbar, Block, BlockTitle, List, ListItem } from 'framework7-react';
+import { Page, Navbar, Block, BlockTitle, List, ListItem, useStore } from 'framework7-react';
 
 const Client = (props) => {
   const { client } = props;
 
+  const clients = useStore('clients');
+  const currentClient = clients.find((client) => client.id === parseInt(props.f7route.params.clientId, 10));
+
+  const contacts = useStore('contacts');
+  const currentContactsList = contacts.filter(function (contact) {
+    return currentClient.contacts.includes(contact.id);
+  });
+
   return (
+    //TODO: fix routing - wont route backwards to admin page...
     <Page>
       <Navbar title={`${client.name}`} backLink="Back" />
       <Block strong>
@@ -17,21 +26,15 @@ const Client = (props) => {
       </List>
       <BlockTitle large>Contacts</BlockTitle>
       <List strong dividersIos>
+        { currentContactsList.map((contact) => (
+          <ListItem
+          key={contact.id}
+          link={`contact/:id/edit`}
+          title={contact.name}
+        ></ListItem>
+        )) }
         <ListItem link={`add/contact`}>Add New Contact</ListItem>
       </List>
-      {/* <BlockTitle large>Links</BlockTitle>
-      <List strong dividersIos>
-        {client.links.map((link, index) => (
-          <ListItem
-            key={index}
-            link={link.url}
-            title={link.title}
-            external
-            target="_blank"
-          ></ListItem>
-        ))}
-        <ListItem external link={`${props.f7route.path}/add/link`}>Add New Link</ListItem>
-      </List> */}
     </Page>
   );
 };

@@ -4,7 +4,7 @@ import AboutPage from '../pages/about.jsx';
 import FormPage from '../pages/form.jsx';
 import JobsPage from '../pages/jobs.jsx';
 import CustomersPage from '../pages/customers.jsx';
-import ProductPage from '../pages/product.jsx';
+import JobDetailsPage from '../pages/job-details.jsx';
 import AdminPage from '../pages/admin.jsx';
 import AssetNew from '..//pages/asset-new.jsx'
 
@@ -30,12 +30,12 @@ var routes = [
     component: JobsPage,
   },
   {
-    path: '/customers/',
-    component: CustomersPage,
+    path: '/jobs/:id',
+    component: JobDetailsPage,
   },
   {
-    path: '/product/:id/',
-    component: ProductPage,
+    path: '/customers/',
+    component: CustomersPage,
   },
   {
     path: '/admin/',
