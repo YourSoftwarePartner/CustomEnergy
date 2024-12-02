@@ -4,7 +4,7 @@ import AboutPage from '../pages/about.jsx';
 import FormPage from '../pages/form.jsx';
 import JobsPage from '../pages/jobs.jsx';
 import CustomersPage from '../pages/customers.jsx';
-import JobDetailsPage from '../pages/job-details.jsx';
+import JobDetailsPage from '../pages/job/job-details.jsx';
 import AdminPage from '../pages/admin.jsx';
 import AssetNew from '..//pages/asset-new.jsx'
 
