@@ -96,15 +96,50 @@ const store = createStore({
   },
   actions: {
     addJob({ state }, job) {
+      if (!job.id) {
+        job.id = state.jobs.length ? Math.max(...state.jobs.map(j => j.id)) + 1 : 1;
+      } else {
+        const existingJob = state.jobs.find(j => j.id === job.id);
+        if (existingJob) {
+          throw new Error(`Job with ID ${job.id} already exists.`);
+        }
+      }
       state.jobs = [...state.jobs, job];
     },
     updateJob({ state }, updatedJob) {
       state.jobs = state.jobs.map(job => job.id === updatedJob.id ? updatedJob : job);
     },
+    addContact({state}, contact) {
+      if (!contact.id) {
+        contact.id = state.contacts.length ? Math.max(...state.contacts.map(c => c.id)) + 1 : 1;
+      } else {
+        const existingContact = state.contacts.find(c => c.id === contact.id);
+        if (existingContact) {
+          throw new Error(`Contact with ID ${contact.id} already exists.`);
+        }
+      }
+      state.contacts = [...state.contacts, contact];
+    },
     addClient({ state }, client) {
+      if (!client.id) {
+        client.id = state.clients.length ? Math.max(...state.clients.map(c => c.id)) + 1 : 1;
+      } else {
+        const existingClient = state.clients.find(c => c.id === client.id);
+        if (existingClient) {
+          throw new Error(`Client with ID ${client.id} already exists.`);
+        }
+      }
       state.clients = [...state.clients, client];
     },
     addAsset({ state }, asset) {
+      if (!asset.id) {
+        asset.id = state.assets.length ? Math.max(...state.assets.map(a => a.id)) + 1 : 1;
+      } else {
+        const existingAsset = state.assets.find(a => a.id === asset.id);
+        if (existingAsset) {
+          throw new Error(`Asset with ID ${asset.id} already exists.`);
+        }
+      }
       state.assets = [...state.assets, asset];
     },
     updateAsset({ state }, updatedAsset) {

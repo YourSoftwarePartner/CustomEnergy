@@ -8,6 +8,12 @@ const DynamicForm = ({ formConfig }) => {
         setFormData({ ...formData, [id]: value });
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const event = new CustomEvent('formSubmit', { detail: formData });
+        window.dispatchEvent(event);
+    };
+
     const renderField = (field) => {
         switch (field.type) {
             case 'text':
@@ -85,10 +91,10 @@ const DynamicForm = ({ formConfig }) => {
     return (
         <div>
             <BlockTitle>Fill in the form</BlockTitle>
-            <List form>
+            <List form onSubmit={handleSubmit}>
                 {formConfig.fields.map(field => renderField(field))}
+                <Button type="submit" fill>Submit</Button>
             </List>
-            <Button fill>Submit</Button>
         </div>
     );
 };

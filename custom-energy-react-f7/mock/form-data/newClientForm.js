@@ -4,7 +4,7 @@ export const newClientFormData = {
     },
     "fields": [
         {
-            "id": "1",
+            "id": "name",
             "type": "text",
             "label": "Client Name",
             "placeholder": "Enter client name",
@@ -17,7 +17,20 @@ export const newClientFormData = {
             "visibilityConditions": {}
         },
         {
-            "id": "2",
+            "id": "description",
+            "type": "text",
+            "label": "Description",
+            "placeholder": "Enter client description",
+            "required": false,
+            "defaultValue": "",
+            "description": "",
+            "attributes": {
+                "maxlength": 100
+            },
+            "visibilityConditions": {}
+        },
+        {
+            "id": "contactName",
             "type": "text",
             "label": "Primary Contact Name",
             "placeholder": "Enter primary contact name",
@@ -31,7 +44,7 @@ export const newClientFormData = {
             "visibilityConditions": {}
         },
         {
-            "id": "4",
+            "id": "contactNumber",
             "type": "text",
             "label": "Primary Contact Phone",
             "placeholder": "Enter primary contact phone",
@@ -44,7 +57,7 @@ export const newClientFormData = {
             "visibilityConditions": {}
         },
         {
-            "id": "3",
+            "id": "contactEmail",
             "type": "email",
             "label": "Primary Contact Email",
             "placeholder": "Enter primary contact email",
