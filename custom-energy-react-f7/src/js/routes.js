@@ -3,7 +3,7 @@ import HomePage from '../pages/home.jsx';
 import AboutPage from '../pages/about.jsx';
 import FormPage from '../pages/form.jsx';
 import JobsPage from '../pages/job/jobs.jsx';
-import CustomersPage from '../pages/clients/customers.jsx';
+import CustomersPage from '../pages/clients/clients.jsx';
 import JobDetailsPage from '../pages/job/job-details.jsx';
 import AdminPage from '../pages/admin/admin.jsx';
 import AssetNew from '../pages/asset/asset-new.jsx'
@@ -11,6 +11,8 @@ import AssetNew from '../pages/asset/asset-new.jsx'
 import DynamicRoutePage from '../pages/dynamic-route.jsx';
 import Client from '../pages/clients/client.jsx';
 import NotFoundPage from '../pages/404.jsx';
+import ClientNew from '../pages/clients/client-new.jsx';
+import ClientsPage from '../pages/clients/clients.jsx';
 
 var routes = [
   {
@@ -34,8 +36,12 @@ var routes = [
     component: JobDetailsPage,
   },
   {
-    path: '/customers/',
-    component: CustomersPage,
+    path: '/clients/',
+    component: ClientsPage,
+  },
+  {
+    path: '/client/new',
+    component: ClientNew,
   },
   {
     path: '/admin/',

@@ -101,6 +101,9 @@ const store = createStore({
     updateJob({ state }, updatedJob) {
       state.jobs = state.jobs.map(job => job.id === updatedJob.id ? updatedJob : job);
     },
+    addClient({ state }, client) {
+      state.clients = [...state.clients, client];
+    },
     addAsset({ state }, asset) {
       state.assets = [...state.assets, asset];
     },

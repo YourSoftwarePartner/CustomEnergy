@@ -4,9 +4,9 @@ import { Page, Navbar, Toolbar } from 'framework7-react';
 // Konsta UI components
 import { Block, Button, List, ListItem, Link, BlockTitle } from 'konsta/react';
 
-const CustomersPage = () => (
+const ClientsPage = () => (
   // Use Page, Navbar & Toolbar from Framework7
-  <Page name="customers">
+  <Page name="clients">
     <Navbar title="Clients" className="top-0 sticky" centerTitle="true" backLink/>
 
     {/* In page content we can use Konsta UI components  */}
@@ -21,5 +21,5 @@ const CustomersPage = () => (
     </List>
   </Page>
 );
-export default CustomersPage;
+export default ClientsPage;
 

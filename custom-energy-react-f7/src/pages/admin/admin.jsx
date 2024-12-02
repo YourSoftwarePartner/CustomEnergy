@@ -20,8 +20,8 @@ const AdminPage = () => (
     </Block>
     <BlockTitle large>Client Configuration</BlockTitle>
     <List>
-      <ListItem href="/customers/" title="View Clients" />
-      <ListItem href="/about/" title="Create New Client" />
+      <ListItem href="/clients/" title="View Clients" />
+      <ListItem href="/client/new" title="Create New Client" />
     </List>
     <BlockTitle large>Engineer Configuration</BlockTitle>
     <List>
