@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import { testFormData } from "../../mock/form-data/testForm";
-import DynamicForm from '../components/form';
+import DynamicForm from '../../components/form';
 import { Page, Navbar, f7 } from 'framework7-react';
+import { testFormData } from '../../../mock/form-data/testForm'
 
 
 const AssetNew = ({f7route}) => {

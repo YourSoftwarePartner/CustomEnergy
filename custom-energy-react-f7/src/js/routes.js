@@ -2,14 +2,14 @@
 import HomePage from '../pages/home.jsx';
 import AboutPage from '../pages/about.jsx';
 import FormPage from '../pages/form.jsx';
-import JobsPage from '../pages/jobs.jsx';
-import CustomersPage from '../pages/customers.jsx';
+import JobsPage from '../pages/job/jobs.jsx';
+import CustomersPage from '../pages/clients/customers.jsx';
 import JobDetailsPage from '../pages/job/job-details.jsx';
-import AdminPage from '../pages/admin.jsx';
-import AssetNew from '..//pages/asset-new.jsx'
+import AdminPage from '../pages/admin/admin.jsx';
+import AssetNew from '../pages/asset/asset-new.jsx'
 
 import DynamicRoutePage from '../pages/dynamic-route.jsx';
-import Client from '../pages/client.jsx';
+import Client from '../pages/clients/client.jsx';
 import NotFoundPage from '../pages/404.jsx';
 
 var routes = [
