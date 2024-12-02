@@ -14,12 +14,15 @@ const ClientNew = () => {
 
     // Split out contact information and client information and call addClient in store...
     
-    return formConfig ? 
-    <Page>
+    return (
+    <Page name="new client">
         <Navbar title={`New Client`} backLink="Back" />
-        <DynamicForm formConfig={formConfig}></DynamicForm>
+        { formConfig ? 
+        <DynamicForm formConfig={formConfig}></DynamicForm> :
+        <div>Loading...</div>
+        }
     </Page>
-    : <div>Loading...</div>
+    )
 }
 
 export default ClientNew;

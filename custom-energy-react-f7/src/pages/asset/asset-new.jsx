@@ -16,12 +16,16 @@ const AssetNew = ({f7route}) => {
       return () => {};
     }, [f7route.params]);
     
-    return formConfig ? 
+    return (
     <Page>
         <Navbar title={`${clientId} - New Asset`} backLink="Back" />
+        { formConfig ?
         <DynamicForm formConfig={formConfig}></DynamicForm>
+        : <div>Loading...</div>
+        }
     </Page>
-    : <div>Loading...</div>
+    )
+    
 }
 
 export default AssetNew;
