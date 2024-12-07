@@ -10,7 +10,7 @@ const ClientsPage = () => {
   return (
     // Use Page, Navbar & Toolbar from Framework7
     <Page name="clients">
-      <Navbar title="Clients" className="top-0 sticky" centerTitle="true" backLink />
+      <Navbar title="Clients" className="top-0 sticky" backLink />
 
       {/* In page content we can use Konsta UI components  */}
       <Block strong>
@@ -21,7 +21,7 @@ const ClientsPage = () => {
       <BlockTitle large>Customers</BlockTitle>
       <List>
         {clients.map((client) => (
-          <ListItem key={client.id} title={client.name} link={`/client/${client.id}/`} />
+          <ListItem key={client.id} title={client.name} href={`/client/${client.id}/`} />
         ))}
       </List>
     </Page>

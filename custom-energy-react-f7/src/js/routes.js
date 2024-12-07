@@ -13,6 +13,7 @@ import Client from '../pages/clients/client.jsx';
 import NotFoundPage from '../pages/404.jsx';
 import ClientNew from '../pages/clients/client-new.jsx';
 import ClientsPage from '../pages/clients/clients.jsx';
+import AssetManager from 'pages/asset/asset-manager.jsx';
 
 var routes = [
   {
@@ -57,51 +58,12 @@ var routes = [
     component: AssetNew
   },
   {
-
+    path: '/client/:clientId/assets',
+    component: AssetManager
+  },
+  {
     path: '/client/:clientId/',
-    async: function ({ router, to, resolve }) {
-      // App instance
-      var app = router.app;
-
-      // Show Preloader
-      app.preloader.show();
-
-      // User ID from request
-      var clientId = to.params.clientId;
-
-      // Simulate Ajax Request
-      setTimeout(function () {
-        // We got user data from request
-        var client = {
-          name: 'British Gas',
-          desc: 'Nationwide Gas & Electric Supplier',
-          links: [
-            {
-              title: 'Framework7 Website',
-              url: 'http://framework7.io',
-            },
-            {
-              title: 'Framework7 Forum',
-              url: 'http://forum.framework7.io',
-            },
-          ]
-        };
-        // Hide Preloader
-        app.preloader.hide();
-
-        // Resolve route to load page
-        resolve(
-          {
-            component: Client,
-          },
-          {
-            props: {
-              client: client,
-            }
-          }
-        );
-      }, 1000);
-    },
+    component: Client,
   },
   {
     path: '(.*)',

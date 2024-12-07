@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Page, Navbar, Block, BlockTitle, List, ListItem, useStore } from 'framework7-react';
 
 const Client = (props) => {
@@ -13,28 +13,35 @@ const Client = (props) => {
   });
 
   return (
-    //TODO: fix routing - wont route backwards to admin page...
     <Page>
-      <Navbar title={`${client.name}`} backLink="Back" />
+      { currentClient && clients?.length > 0 ? 
+      <Fragment>
+        <Navbar title={`${currentClient.name}`} backLink="Back" />
+        <Block strong>
+          {currentClient.description}
+        </Block>
+        <BlockTitle large>Information [FORM HERE]</BlockTitle>
+        <BlockTitle large>Assets</BlockTitle>
+        <List strong dividersIos>
+          <ListItem link={`add/asset`}>Add New Asset</ListItem>
+        </List>
+        <BlockTitle large>Contacts</BlockTitle>
+        <List strong dividersIos>
+          { currentContactsList.map((contact) => (
+            <ListItem
+            key={contact.id}
+            link={`contact/:id/edit`}
+            title={contact.name}
+          ></ListItem>
+          )) }
+          <ListItem link={`add/contact`}>Add New Contact</ListItem>
+        </List>
+      </Fragment>
+      : 
       <Block strong>
-        {client.desc}
+        <p>Client not found.</p>
       </Block>
-      <BlockTitle large>Information [FORM HERE]</BlockTitle>
-      <BlockTitle large>Assets</BlockTitle>
-      <List strong dividersIos>
-        <ListItem link={`add/asset`}>Add New Asset</ListItem>
-      </List>
-      <BlockTitle large>Contacts</BlockTitle>
-      <List strong dividersIos>
-        { currentContactsList.map((contact) => (
-          <ListItem
-          key={contact.id}
-          link={`contact/:id/edit`}
-          title={contact.name}
-        ></ListItem>
-        )) }
-        <ListItem link={`add/contact`}>Add New Contact</ListItem>
-      </List>
+  }
     </Page>
   );
 };
