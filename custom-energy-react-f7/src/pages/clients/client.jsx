@@ -20,10 +20,10 @@ const Client = (props) => {
         <Block strong>
           {currentClient.description}
         </Block>
-        <BlockTitle large>Information [FORM HERE]</BlockTitle>
+        {/* <BlockTitle large>Information [FORM HERE]</BlockTitle> */}
         <BlockTitle large>Assets</BlockTitle>
         <List strong dividersIos>
-          <ListItem link={`add/asset`}>Add New Asset</ListItem>
+          <ListItem link={`assets`}>Manage Assets</ListItem>
         </List>
         <BlockTitle large>Contacts</BlockTitle>
         <List strong dividersIos>

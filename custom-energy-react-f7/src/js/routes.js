@@ -13,7 +13,7 @@ import Client from '../pages/clients/client.jsx';
 import NotFoundPage from '../pages/404.jsx';
 import ClientNew from '../pages/clients/client-new.jsx';
 import ClientsPage from '../pages/clients/clients.jsx';
-import AssetManager from 'pages/asset/asset-manager.jsx';
+import AssetManager from '../pages/asset/asset-manager.jsx';
 
 var routes = [
   {
@@ -54,7 +54,7 @@ var routes = [
     component: DynamicRoutePage,
   },
   {
-    path: '/client/:clientId/add/asset',
+    path: '/client/:clientId/assets/new',
     component: AssetNew
   },
   {

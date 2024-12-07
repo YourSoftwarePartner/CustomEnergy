@@ -16,6 +16,7 @@ export const testFormData = {
             },
             "visibilityConditions": {
                 "fieldId": "2",
+                "operator": "==",
                 "value": "show"
             }
         },

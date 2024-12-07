@@ -1,8 +1,6 @@
 import React from 'react';
 // Use Page, Navbar, Toolbar from Framework7
-import { Page, Navbar, Toolbar, useStore } from 'framework7-react';
-// Konsta UI components
-import { Block, Button, List, ListItem, Link, BlockTitle } from 'konsta/react';
+import { Page, Navbar, Toolbar, useStore, ListItem, Block, BlockTitle, List } from 'framework7-react';
 
 const ClientsPage = () => {
   const clients = useStore('clients');
@@ -19,9 +17,9 @@ const ClientsPage = () => {
         </p>
       </Block>
       <BlockTitle large>Customers</BlockTitle>
-      <List>
+      <List dividersIos>
         {clients.map((client) => (
-          <ListItem key={client.id} title={client.name} href={`/client/${client.id}/`} />
+          <ListItem key={client.id} title={client.name} link={`/client/${client.id}/`} />
         ))}
       </List>
     </Page>

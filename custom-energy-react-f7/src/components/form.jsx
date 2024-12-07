@@ -1,3 +1,5 @@
+import React from "react";
+
 import { useState } from "react";
 import { Page, Navbar, BlockTitle, List, ListInput, Button, ListItem, Radio, Checkbox } from 'framework7-react';
 
@@ -14,7 +16,33 @@ const DynamicForm = ({ formConfig }) => {
         window.dispatchEvent(event);
     };
 
+    const checkVisibility = (field) => {
+        const { visibilityConditions } = field;
+        if (!visibilityConditions || !visibilityConditions.fieldId) {
+            return true;
+        }
+        const { fieldId, operator, value } = visibilityConditions;
+        const fieldValue = formData[fieldId];
+
+        switch (operator) {
+            case '==':
+                return fieldValue === value;
+            case '!=':
+                return fieldValue !== value;
+            case 'in':
+                return Array.isArray(value) && value.includes(fieldValue);
+            case 'notin':
+                return Array.isArray(value) && !value.includes(fieldValue);
+            default:
+                return true;
+        }
+    };
+
     const renderField = (field) => {
+        if (!checkVisibility(field)) {
+            return null;
+        }
+
         switch (field.type) {
             case 'text':
             case 'number':
@@ -35,27 +63,6 @@ const DynamicForm = ({ formConfig }) => {
                         onInput={(e) => handleChange(field.id, e.target.value)}
                     />
                 );
-            case 'checkbox':
-                return (
-                    <ListItem key={field.id} checkbox title={field.label}>
-                    </ListItem>
-                );
-            case 'radio':
-                return (
-                    <List key={field.id}>
-                        <ListItem title={field.label} groupTitle />
-                        {field.options.map((option, index) => (
-                            <ListItem key={index} radio title={option}>
-                            </ListItem>
-                        ))}
-                    </List>
-                );
-            case 'toggle':
-                return (
-                    <ListItem title={field.label}>
-                        <Toggle slot="after" />
-                    </ListItem>
-                ); 
             case 'select':
                 return (
                     <ListInput
@@ -72,16 +79,33 @@ const DynamicForm = ({ formConfig }) => {
                         ))}
                     </ListInput>
                 );
-            case 'file':
+            case 'checkbox':
                 return (
-                    <ListInput
+                    <ListItem
                         key={field.id}
-                        type="file"
-                        label={field.label}
-                        required={field.required}
-                        info={field.description}
-                        onInput={(e) => handleChange(field.id, e.target.files[0])}
+                        checkbox
+                        title={field.label}
+                        name={field.id}
+                        value={field.defaultValue}
+                        onChange={(e) => handleChange(field.id, e.target.checked)}
                     />
+                );
+            case 'radio':
+                return (
+                    <List key={field.id}>
+                        <BlockTitle>{field.label}</BlockTitle>
+                        {field.options.map((option, index) => (
+                            <ListItem
+                                key={index}
+                                radio
+                                name={field.id}
+                                value={option}
+                                title={option}
+                                checked={field.defaultValue === option}
+                                onChange={(e) => handleChange(field.id, e.target.value)}
+                            />
+                        ))}
+                    </List>
                 );
             default:
                 return null;
@@ -89,13 +113,15 @@ const DynamicForm = ({ formConfig }) => {
     };
 
     return (
-        <div>
-            <BlockTitle>Fill in the form</BlockTitle>
-            <List form onSubmit={handleSubmit}>
-                {formConfig.fields.map(field => renderField(field))}
-                <Button type="submit" fill>Submit</Button>
-            </List>
-        </div>
+        <Page>
+            <Navbar title={formConfig.config.title} backLink="Back" />
+            <form onSubmit={handleSubmit}>
+                <List>
+                    {formConfig.fields.map(field => renderField(field))}
+                </List>
+                <Button fill type="submit">Submit</Button>
+            </form>
+        </Page>
     );
 };
 
