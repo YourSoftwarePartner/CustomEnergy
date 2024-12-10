@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import DynamicForm from '../../components/form';
-import { Page, Navbar, f7, useStore } from 'framework7-react';
+import { Page, Navbar, f7, useStore , Button} from 'framework7-react';
 import { newAssetForm } from '../../../mock/form-data/newAssetForm';
 
 
@@ -21,7 +21,9 @@ const AssetNew = ({f7route}) => {
     
     return (
     <Page>
-        <Navbar title={`${currentClient.name} - New Asset`} backLink="Back" />
+        <Navbar title={`${currentClient.name} - New Asset`} backLink="Back">
+          <Button largeIos largeMd type="submit" href="#" slot="right" large>Add</Button>
+        </Navbar>
         { formConfig ?
         <DynamicForm formConfig={formConfig}></DynamicForm>
         : <div>Loading...</div>

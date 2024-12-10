@@ -60,6 +60,7 @@ const DynamicForm = ({ formConfig }) => {
                         defaultValue={field.defaultValue}
                         info={field.description}
                         {...field.attributes}
+                        outline='true'
                         onInput={(e) => handleChange(field.id, e.target.value)}
                     />
                 );
@@ -119,7 +120,7 @@ const DynamicForm = ({ formConfig }) => {
                 <List>
                     {formConfig.fields.map(field => renderField(field))}
                 </List>
-                <Button fill type="submit">Submit</Button>
+                
             </form>
         </Page>
     );

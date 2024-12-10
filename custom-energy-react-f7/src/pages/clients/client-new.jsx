@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DynamicForm from '../../components/form';
-import { Page, Navbar } from 'framework7-react';
+import { Page, Navbar, Button } from 'framework7-react';
 import { newClientFormData } from '../../../mock/form-data/newClientForm'
 import store from '../../js/store';
 
@@ -40,7 +40,9 @@ const ClientNew = () => {
 
   return (
     <Page name="new client">
-      <Navbar title={`New Client`} backLink="Back" />
+      <Navbar title={`New Client`} backLink="Back">
+        <Button type="submit" href="#" slot="right" large>Add</Button>
+      </Navbar>
       {formConfig ?
         <DynamicForm formConfig={formConfig}></DynamicForm> :
         <div>Loading...</div>

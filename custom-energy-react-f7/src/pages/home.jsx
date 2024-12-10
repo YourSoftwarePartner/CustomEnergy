@@ -12,57 +12,104 @@ import {
   BlockTitle,
   List,
   ListItem,
-  Button
+  Button,
+  Icon,
+  Card,
+  CardContent,
+  CardHeader,
+  BlockHeader,
+  Checkbox,
 } from 'framework7-react';
 
 const HomePage = () => (
   <Page name="home">
     {/* Top Navbar */}
-    <Navbar large sliding={false}>
+    <Navbar large={false} sliding={false}>
       <NavLeft>
         <Link iconIos="f7:menu" iconMd="material:menu" panelOpen="left" />
       </NavLeft>
-      <NavTitle sliding>CustomEnergy</NavTitle>
-      <NavTitleLarge>CustomEnergy</NavTitleLarge>
+
+      <NavTitle sliding>Commissioning System</NavTitle>
     </Navbar>
 
     {/* Page content */}
     <Block>
-      <p>This is an example of tabs-layout application. The main point of such tabbed layout is that each tab contains independent view with its own routing and navigation.</p>
-
-      <p>Each tab/view may have different layout, different navbar type (dynamic, fixed or static) or without navbar like this tab.</p>
+    <img src="../assets/logo.png"></img>
     </Block>
-    <BlockTitle>Navigation</BlockTitle>
-    <List strong inset dividersIos>
-      <ListItem link="/about/" title="About"/>
-      <ListItem link="/form/" title="Form"/>
-    </List>
+     <Card className="data-table data-table-init">
+      <CardHeader>
+        <div className="data-table-title">Upcomming Jobs</div>
+        <div className="data-table-actions">
+          <Link iconIos="f7:line_horizontal_3_decrease" iconMd="material:sort" />
+          <Link iconIos="f7:ellipsis_vertical_circle" iconMd="material:more_vert" />
+        </div>
+      </CardHeader>
+      <CardContent padding={false}>
+        <table>
+          <thead>
+            <tr>
+              <th className="label-cell sortable-cell sortable-cell-active">
+                Date
+              </th>
+              <th className="numeric-cell sortable-cell">Client</th>
+              <th className="numeric-cell sortable-cell">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="label-cell">24/12/2024</td>
+              <td className="numeric-cell">British Gas</td>
+              <td className="numeric-cell">New Site</td>
+            </tr>
+            <tr>
+              <td className="label-cell">01/01/2025</td>
+              <td className="numeric-cell">British Gas</td>
+              <td className="numeric-cell">Re-Test</td>
+            </tr>
+          </tbody>
+        </table>
+      </CardContent>
+    </Card>
 
-    <BlockTitle>Modals</BlockTitle>
-    <Block className="grid grid-cols-2 grid-gap">
-      <Button fill popupOpen="#my-popup">Popup</Button>
-      <Button fill loginScreenOpen="#my-login-screen">Login Screen</Button>
-    </Block>
+    <Card className="data-table data-table-init">
+      <CardHeader>
+        <div className="data-table-title">New Assets</div>
+        <div className="data-table-actions">
+          <Link iconIos="f7:line_horizontal_3_decrease" iconMd="material:sort" />
+          <Link iconIos="f7:ellipsis_vertical_circle" iconMd="material:more_vert" />
+        </div>
+      </CardHeader>
+      <CardContent padding={false}>
+        <table>
+          <thead>
+            <tr>
+              <th className="label-cell sortable-cell sortable-cell-active">
+                Name
+              </th>
+              <th className="numeric-cell sortable-cell">Location</th>
+              <th className="numeric-cell sortable-cell">Client</th>
+              <th className="numeric-cell sortable-cell">Date Installed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="label-cell">Transformer</td>
+              <td className="numeric-cell">Battersea</td>
+              <td className="numeric-cell">British Gas</td>
+              <td className="numeric-cell">20/11/2024</td>
+            </tr>
+            <tr>
+              <td className="label-cell">Switchgear</td>
+              <td className="numeric-cell">Harrogate</td>
+              <td className="numeric-cell">British Gas</td>
+              <td className="numeric-cell">28/09/2024</td>
+            </tr>
+          </tbody>
+        </table>
+      </CardContent>
+    </Card>
 
-    <BlockTitle>Panels</BlockTitle>
-    <Block className="grid grid-cols-2 grid-gap">
-      <Button fill panelOpen="left">Left Panel</Button>
-    </Block>
 
-    <List strong inset dividersIos>
-      <ListItem
-        title="Dynamic (Component) Route"
-        link="/dynamic-route/blog/45/post/125/?foo=bar#about"
-      />
-      <ListItem
-        title="Default Route (404)"
-        link="/load-something-that-doesnt-exist/"
-      />
-      <ListItem
-        title="Request Data & Load"
-        link="/request-and-load/user/123456/"
-      />
-    </List>
   </Page>
 );
 export default HomePage;

@@ -6,7 +6,8 @@ module.exports = konstaConfig({
     konsta: {
         colors: {
             // "primary" is the main app color, if not specified will be default to '#007aff'
-            primary: '#7c9b17'
+            primary: '#93DC5C',
+            secondary: '#93DC5C'
         }
     }
     });

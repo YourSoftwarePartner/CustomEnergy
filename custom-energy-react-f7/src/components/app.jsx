@@ -35,8 +35,8 @@ const MyApp = () => {
     name: 'CustomEnergy', // App name
     theme: 'auto', // Automatic theme detection
     colors: {
-      primary: '#ffffff',
-      secondary: '#a6d608'
+      primary: '#FFFFFF',
+      secondary: '#DCDCDC'
     },
 
 
