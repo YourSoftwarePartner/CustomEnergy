@@ -9,7 +9,50 @@ const store = createStore({
         name: 'British Gas',
         description: 'Leading energy and home services provider in the UK.',
         contacts: [1, 2, 3],
-        assets: [1, 2, 3, 4, 5]
+        assets: [1, 2, 3, 4, 5],
+        engineers: [1, 2]
+      }
+    ],
+    engineers: [
+      {
+        id: 1,
+        name: 'John Doe',
+        phoneNumber: '07712345678',
+        email: 'jdoe@customenergy.com',
+        role: 'Engineer',
+        jobTitle: 'Senior Engineer',  
+      },
+      {
+        id: 2,
+        name: 'Jane Doe',
+        phoneNumber: '07712345678',
+        email: 'janedoe@customenergy.com',
+        role: 'Engineer',
+        jobTitle: 'Junior Engineer',
+      },
+      {
+        id: 3,
+        name: 'John Smith',
+        phoneNumber: '07712345678',
+        email: '',
+        role: 'Engineer',
+        jobTitle: 'Senior Engineer',
+      },
+      {
+        id: 4,
+        name: 'Jane Smith',
+        phoneNumber: '07712345678',
+        email: '',
+        role: 'Engineer',
+        jobTitle: 'Junior Engineer',
+      },
+      {
+        id: 5,
+        name: 'John Brown',
+        phoneNumber: '07712345678',
+        email: '',
+        role: 'Engineer',
+        jobTitle: 'Senior Engineer',
       }
     ],
     contacts: [
@@ -55,28 +98,28 @@ const store = createStore({
     assets: [
       {
         id: 1,
-        clientId: '1',
-        name: 'Test Asset 1'
+        make: 'Test Asset 1',
+        type: 'LV cabinet type 1',
       },
       {
         id: 2,
-        clientId: '1',
-        name: 'Test Asset 2'
+        make: 'Test Asset 2',
+        type: 'LV cabinet type 2',
       },
       {
         id: 3,
-        clientId: '1',
-        name: 'Test Asset 3'
+        make: 'Test Asset 3',
+        type: 'LV cabinet type 3',
       },
       {
         id: 4,
-        clientId: '1',
-        name: 'Test Asset 4'
+        make: 'Test Asset 4',
+        type: 'LV cabinet type 4',
       },
       {
         id: 5,
-        clientId: '1',
-        name: 'Test Asset 5'
+        make: 'Test Asset 5',
+        type: 'LV cabinet type 5',
       }
     ]
   },
@@ -92,6 +135,9 @@ const store = createStore({
     },
     contacts({ state }) {
       return state.contacts;
+    },
+    engineers({ state }) {
+      return state.engineers;
     }
   },
   actions: {
@@ -105,9 +151,8 @@ const store = createStore({
         }
       }
       state.jobs = [...state.jobs, job];
-    },
-    updateJob({ state }, updatedJob) {
-      state.jobs = state.jobs.map(job => job.id === updatedJob.id ? updatedJob : job);
+
+      return Promise.resolve(job);
     },
     addContact({state}, contact) {
       if (!contact.id) {
@@ -119,6 +164,8 @@ const store = createStore({
         }
       }
       state.contacts = [...state.contacts, contact];
+
+      return Promise.resolve(contact);
     },
     addClient({ state }, client) {
       if (!client.id) {
@@ -130,6 +177,8 @@ const store = createStore({
         }
       }
       state.clients = [...state.clients, client];
+
+      return Promise.resolve(client);
     },
     addAsset({ state }, asset) {
       if (!asset.id) {
@@ -141,9 +190,36 @@ const store = createStore({
         }
       }
       state.assets = [...state.assets, asset];
+
+      return Promise.resolve(asset);
+    },
+    addEngineer({ state }, engineer) {
+      if (!engineer.id) {
+        engineer.id = state.engineers.length ? Math.max(...state.engineers.map(e => e.id)) + 1 : 1;
+      } else {
+        const existingEngineer = state.engineers.find(e => e.id === engineer.id);
+        if (existingEngineer) {
+          throw new Error(`Engineer with ID ${engineer.id} already exists.`);
+        }
+      }
+      state.engineers = [...state.engineers, engineer];
+
+      return Promise.resolve(engineer);
     },
     updateAsset({ state }, updatedAsset) {
       state.assets = state.assets.map(asset => asset.id === updatedAsset.id ? updatedAsset : asset);
+    },
+    updateClient({ state }, updatedClient) {
+      state.clients = state.clients.map(client => client.id === updatedClient.id ? updatedClient : client);
+    },
+    updateContact({ state }, updatedContact) {
+      state.contacts = state.contacts.map(contact => contact.id === updatedContact.id ? updatedContact : contact);
+    },
+    updateEngineer({ state }, updatedEngineer) {
+      state.engineers = state.engineers.map(engineer => engineer.id === updatedEngineer.id ? updatedEngineer : engineer);
+    },
+    updateJob({ state }, updatedJob) {
+      state.jobs = state.jobs.map(job => job.id === updatedJob.id ? updatedJob : job);
     }
   },
 });

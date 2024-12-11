@@ -3,7 +3,6 @@ import HomePage from '../pages/home.jsx';
 import AboutPage from '../pages/about.jsx';
 import FormPage from '../pages/form.jsx';
 import JobsPage from '../pages/job/jobs.jsx';
-import CustomersPage from '../pages/clients/clients.jsx';
 import JobDetailsPage from '../pages/job/job-details.jsx';
 import AdminPage from '../pages/admin/admin.jsx';
 import AssetNew from '../pages/asset/asset-new.jsx'
@@ -14,6 +13,8 @@ import NotFoundPage from '../pages/404.jsx';
 import ClientNew from '../pages/clients/client-new.jsx';
 import ClientsPage from '../pages/clients/clients.jsx';
 import AssetManager from '../pages/asset/asset-manager.jsx';
+import EngineersPage from '../pages/engineers/engineers.jsx';
+import EngineersNew from '../pages/engineers/engineer-new.jsx';
 
 var routes = [
   {
@@ -52,6 +53,14 @@ var routes = [
   {
     path: '/dynamic-route/blog/:blogId/post/:postId/',
     component: DynamicRoutePage,
+  },
+  {
+    path: '/engineers/',
+    component: EngineersPage
+  },
+  {
+    path: '/engineers/new',
+    component: EngineersNew
   },
   {
     path: '/client/:clientId/assets/new',

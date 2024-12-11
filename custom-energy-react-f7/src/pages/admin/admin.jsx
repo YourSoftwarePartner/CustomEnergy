@@ -29,9 +29,9 @@ const AdminPage = () => (
     </List>
     <BlockTitle large>Engineer Configuration</BlockTitle>
     <List>
-      <ListItem media={<DemoIcon/>} href="/customers/" title="View Engineers" after={<Badge>5</Badge>}>
+      <ListItem media={<DemoIcon/>} href="/engineers/" title="View Engineers" after={<Badge>5</Badge>}>
       </ListItem>
-      <ListItem media={<DemoIcon/>} title="Add New Engineer"  />
+      <ListItem media={<DemoIcon/>} href="/engineers/new" title="Add New Engineer" />
     </List>
   </Page>
 );

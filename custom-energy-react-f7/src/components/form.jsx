@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { Page, Navbar, BlockTitle, List, ListInput, Button, ListItem, Radio, Checkbox } from 'framework7-react';
 
-const DynamicForm = ({ formConfig }) => {
+const DynamicForm = ({ formTitle, formConfig }) => {
     const [formData, setFormData] = useState({});
 
     const handleChange = (id, value) => {
@@ -75,6 +75,7 @@ const DynamicForm = ({ formConfig }) => {
                         info={field.description}
                         onInput={(e) => handleChange(field.id, e.target.value)}
                     >
+                        <option value="" disabled selected hidden></option>
                         {field.options.map((option, index) => (
                             <option key={index} value={option}>{option}</option>
                         ))}
@@ -113,14 +114,21 @@ const DynamicForm = ({ formConfig }) => {
         }
     };
 
+    const handleSubmitButtonClick = (event) => {
+        event.preventDefault();
+        const formElement = document.getElementById('dynamicForm');
+        formElement.requestSubmit();
+    };
+
     return (
         <Page>
-            <Navbar title={formConfig.config.title} backLink="Back" />
-            <form onSubmit={handleSubmit}>
+            <Navbar title={formTitle ?? formConfig.config.title} backLink="Back">
+                <Button href="#" slot="right" onClick={handleSubmitButtonClick} large>Add</Button>
+            </Navbar>
+            <form id="dynamicForm" onSubmit={handleSubmit}>
                 <List>
                     {formConfig.fields.map(field => renderField(field))}
                 </List>
-                
             </form>
         </Page>
     );

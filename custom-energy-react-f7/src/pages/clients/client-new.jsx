@@ -17,7 +17,10 @@ const ClientNew = () => {
       
       const clientData = {
         name: formData.name,
-        description: formData.description
+        description: formData.description,
+        contacts: [],
+        assets: [],
+        engineers: []
       };
       const contactData = {
         name: formData.contactName,
@@ -40,9 +43,6 @@ const ClientNew = () => {
 
   return (
     <Page name="new client">
-      <Navbar title={`New Client`} backLink="Back">
-        <Button type="submit" href="#" slot="right" large>Add</Button>
-      </Navbar>
       {formConfig ?
         <DynamicForm formConfig={formConfig}></DynamicForm> :
         <div>Loading...</div>
